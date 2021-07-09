@@ -21,8 +21,8 @@ const Drone = React.memo(({ data }) => {
 
   useFrame(() => {
     const r = Math.cos((clock.getElapsedTime() / 2) * data.speed) * Math.PI
-    ref.current.position.copy(data.offset)
-    ref.current.rotation.set(r, r, r)
+    ref.current?.position.copy(data.offset)
+    ref.current?.rotation.set(r, r, r)
   })
 
   return (
