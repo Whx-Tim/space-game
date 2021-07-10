@@ -49,6 +49,10 @@ export default function Ship() {
     crossMaterial.color = mutation.hits ? lightgreen : hotpink
     cross.current.visible = !mutation.hits
     target.current.visible = !!mutation.hits
+
+    setInterval(() => {
+      console.log(main.current)
+    }, 1000)
   })
 
   return (
