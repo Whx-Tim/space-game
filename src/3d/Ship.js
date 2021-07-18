@@ -24,12 +24,6 @@ export default function Ship() {
   const cross = useRef()
   const target = useRef()
 
-  let lock = true
-
-  setInterval(() => {
-    lock = true
-  }, 1000)
-
   useFrame(() => {
     main.current.position.z = Math.sin(clock.getElapsedTime() * 40) * Math.PI * 0.2
     main.current.rotation.z += (mouse.x / 500 - main.current.rotation.z) * 0.2
@@ -56,10 +50,6 @@ export default function Ship() {
     cross.current.visible = !mutation.hits
     target.current.visible = !!mutation.hits
 
-    if (lock) {
-      console.log(main.current)
-      lock = false
-    }
   })
 
   return (
