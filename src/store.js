@@ -3,6 +3,7 @@ import { Curves } from 'three/examples/jsm/curves/CurveExtras'
 import { addEffect } from '@react-three/fiber'
 import create from 'zustand'
 import * as audio from './audio'
+import { Vector2 } from 'three'
 
 let guid = 1
 
@@ -105,8 +106,22 @@ const useStore = create((set, get) => {
         playAudio(audio.engine2, 0.3, true)
         playAudio(audio.bg, 1, true)
       },
-      updateMouse({ clientX: x, clientY: y }) {
-        get().mutation.mouse.set(x - window.innerWidth / 2, y - window.innerHeight / 2)
+      // updateMouse({ clientX: x, clientY: y }) {
+      //   get().mutation.mouse.set(x - window.innerWidth / 2, y - window.innerHeight / 2)
+      // },
+      updateMouse(keyCode) {
+        // w: 87
+        console.log(get().mutation.mouse.x)
+        console.log(get().mutation.mouse.y)
+        const y = new Vector2(0, 10)
+        get().mutation.mouse.add(y)
+        console.log(get().mutation.mouse)
+        const each = 10
+        switch (keyCode) {
+          case 87: {
+            // get().mutation.mouse
+          }
+        }
       },
       test(data) {
         box.min.copy(data.offset)

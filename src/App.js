@@ -21,14 +21,15 @@ export default function App() {
   const keydownArray = []
   useEffect(() => {
     const handler = (e) => {
-      if (keydownArray.indexOf(e.key) === -1) {
-        keydownArray.push(e.key)
+      if (keydownArray.indexOf(e.keyCode) === -1) {
+        keydownArray.push(e.keyCode)
       }
 
       console.log(keydownArray)
+      console.log(e.keyCode)
     }
     const removeHandler = (e) => {
-      const index = keydownArray.indexOf(e.key)
+      const index = keydownArray.indexOf(e.keyCode)
       if (index !== -1) {
         keydownArray.splice(index, 1)
       }
