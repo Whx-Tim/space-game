@@ -28,7 +28,7 @@ export default function App() {
       console.log(keydownArray)
     }
     const removeHandler = (e) => {
-      const index = keydownArray.indexOf(e)
+      const index = keydownArray.indexOf(e.key)
       if (index !== -1) {
         keydownArray.splice(index, 1)
       }
