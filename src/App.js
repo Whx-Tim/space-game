@@ -25,6 +25,10 @@ export default function App() {
         keydownArray.push(e.keyCode)
       }
 
+      keydownArray.map((keyCode) => {
+        actions.updateMouse(keyCode)
+      })
+
       console.log(keydownArray)
       console.log(e.keyCode)
     }
