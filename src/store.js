@@ -114,28 +114,23 @@ const useStore = create((set, get) => {
       updateMouse(keyCode) {
         const mouse = get().mutation.mouse
         const each = 20
-        const mouseY = mouse.y > 0 ? mouse.y + each : mouse.y - each
-        const mouseX = mouse.x > 0 ? mouse.x + each : mouse.x - each
-        if (mouseY < 400 && mouseY > -400 && mouseX < 450 && mouseX > -400) {
-          return false
-        }
         const result = new Vector2()
-        switch (keyCode) {
-          case 87:
+        switch (true) {
+          case keyCode === 87 && mouse.y > -400:
             result.set(0, -each)
             break
-          case 65:
+          case keyCode === 65 && mouse.x > -400:
             result.set(-each, 0)
             break
-          case 68:
+          case keyCode === 68 && mouse.x < 450:
             result.set(each, 0)
             break
-          case 83:
+          case keyCode === 83 && mouse.y < 400:
             result.set(0, each)
             break
         }
 
-        get().mutation.mouse.add(result)
+        mouse.add(result)
       },
       test(data) {
         box.min.copy(data.offset)
