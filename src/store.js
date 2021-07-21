@@ -39,7 +39,7 @@ const useStore = create((set, get) => {
       binormal: new THREE.Vector3(),
       normal: new THREE.Vector3(),
       clock: new THREE.Clock(false),
-      mouse: new THREE.Vector2(-250, 50).clamp(new Vector2(-400, -410), new Vector2(450, 400)),
+      mouse: new THREE.Vector2(-250, 50),
 
       // Re-usable objects
       dummy: new THREE.Object3D(),
@@ -112,6 +112,7 @@ const useStore = create((set, get) => {
 
       // w: 87 a: 65 d: 68 s: 83
       updateMouse(keyCode) {
+        const mouse = get().mutation.mouse
         const result = new Vector2()
         const each = 20
         switch (keyCode) {
@@ -129,7 +130,9 @@ const useStore = create((set, get) => {
             break
         }
 
-        get().mutation.mouse.add(result)
+        if (mouse.y < 400 && mouse.y > -400 && mouse.x < 450 && mouse.x > -400) {
+          get().mutation.mouse.add(result)
+        }
       },
       test(data) {
         box.min.copy(data.offset)
