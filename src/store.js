@@ -113,16 +113,16 @@ const useStore = create((set, get) => {
       // w: 87 a: 65 d: 68 s: 83
       updateMouse(keyCode) {
         const result = new Vector2()
-        const each = 10
+        const each = 20
         switch (keyCode) {
           case 87:
             result.set(0, -each)
             break
           case 65:
-            result.set(each, 0)
+            result.set(-each, 0)
             break
           case 68:
-            result.set(-each, 0)
+            result.set(each, 0)
             break
           case 83:
             result.set(0, each)
