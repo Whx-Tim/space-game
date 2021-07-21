@@ -114,8 +114,8 @@ const useStore = create((set, get) => {
       updateMouse(keyCode) {
         const mouse = get().mutation.mouse
         const each = 20
-        const mouseY = mouse.y + each
-        const mouseX = mouse.x + each
+        const mouseY = mouse.y > 0 ? mouse.y + each : mouse.y - each
+        const mouseX = mouse.x > 0 ? mouse.x + each : mouse.x - each
         if (mouseY < 400 && mouseY > -400 && mouseX < 450 && mouseX > -400) {
           return false
         }
