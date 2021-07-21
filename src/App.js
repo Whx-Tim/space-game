@@ -18,15 +18,29 @@ import useStore from './store'
 export default function App() {
   const { fov } = useStore((state) => state.mutation)
   const actions = useStore((state) => state.actions)
+  const keydownArray = []
   useEffect(() => {
     const handler = (e) => {
-      console.log(e.key)
+      if (keydownArray.indexOf(e.key) === -1) {
+        keydownArray.push(e.key)
+      }
+
+      console.log(keydownArray)
+    }
+    const removeHandler = (e) => {
+      const index = keydownArray.indexOf(e)
+      if (index !== -1) {
+        keydownArray.splice(index, 1)
+      }
     }
 
+
     window.addEventListener('keydown', handler)
+    window.addEventListener('keyup', removeHandler)
 
     return () => {
-      window.removeEventListener('keyup', handler)
+      window.removeEventListener('keydown', handler)
+      window.removeEventListener('keyup', removeHandler)
     }
   })
   return (
