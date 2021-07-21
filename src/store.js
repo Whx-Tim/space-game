@@ -39,7 +39,7 @@ const useStore = create((set, get) => {
       binormal: new THREE.Vector3(),
       normal: new THREE.Vector3(),
       clock: new THREE.Clock(false),
-      mouse: new THREE.Vector2(-250, 50),
+      mouse: new THREE.Vector2(-250, 50).clamp(new Vector2(-400, -410), new Vector2(450, 400)),
 
       // Re-usable objects
       dummy: new THREE.Object3D(),
