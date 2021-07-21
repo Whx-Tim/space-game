@@ -109,19 +109,27 @@ const useStore = create((set, get) => {
       // updateMouse({ clientX: x, clientY: y }) {
       //   get().mutation.mouse.set(x - window.innerWidth / 2, y - window.innerHeight / 2)
       // },
+
+      // w: 87 a: 65 d: 68 s: 83
       updateMouse(keyCode) {
-        // w: 87
-        console.log(get().mutation.mouse.x)
-        console.log(get().mutation.mouse.y)
-        const y = new Vector2(0, 10)
-        get().mutation.mouse.add(y)
-        console.log(get().mutation.mouse)
+        const result = new Vector2()
         const each = 10
         switch (keyCode) {
-          case 87: {
-            // get().mutation.mouse
-          }
+          case 87:
+            result.set(0, -each)
+            break
+          case 65:
+            result.set(each, 0)
+            break
+          case 68:
+            result.set(-each, 0)
+            break
+          case 83:
+            result.set(0, each)
+            break
         }
+
+        get().mutation.mouse.add(result)
       },
       test(data) {
         box.min.copy(data.offset)
