@@ -44,7 +44,8 @@ export default function App() {
     }
   })
   return (
-    <div onPointerMove={actions.updateMouse} onClick={actions.shoot}>
+    // <div onPointerMove={actions.updateMouse} onClick={actions.shoot}>
+    <div onClick={actions.shoot}>
       <Canvas
         linear
         mode="concurrent"
