@@ -18,16 +18,21 @@ import useStore from './store'
 export default function App() {
   const { fov } = useStore((state) => state.mutation)
   const actions = useStore((state) => state.actions)
+  let interval
   const keydownArray = []
+
+  window.clearInterval(interval)
+  interval = window.setInterval(() => {
+    keydownArray.map((keyCode) => {
+      actions.updateMouse(keyCode)
+    })
+  }, 100)
   useEffect(() => {
     const handler = (e) => {
       if (keydownArray.indexOf(e.keyCode) === -1) {
         keydownArray.push(e.keyCode)
       }
 
-      keydownArray.map((keyCode) => {
-        actions.updateMouse(keyCode)
-      })
 
       console.log(keydownArray)
       console.log(e.keyCode)
